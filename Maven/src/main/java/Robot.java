@@ -8,7 +8,6 @@ import org.apache.http.util.EntityUtils;
 
 public class Robot {
 
-        //public static String WEBHOOK_TOKEN = "https://oapi.dingtalk.com/robot/send?access_token=e882a5ac1a512f57fadc37d6a711e5f4f541c628cf64c7d804d3b465ab213543";
 
         public static void main(String args[]) throws Exception{
 
