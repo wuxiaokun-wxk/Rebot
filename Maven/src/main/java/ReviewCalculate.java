@@ -6,6 +6,7 @@ import sun.rmi.runtime.Log;
 
 import javax.print.DocFlavor;
 import java.net.URL;
+import java.util.Date;
 import java.util.Set;
 
 public class ReviewCalculate {
@@ -73,7 +74,8 @@ public class ReviewCalculate {
                     }
 
                 }*/
-                    webDriver.findElement(By.xpath("/html/body/div[6]/div/div[2]/div/div[2]/button")).click();
+                    //webDriver.findElement(By.className("ant-btn-default")).click();
+                    System.out.println(System.currentTimeMillis());
 
 
                 }
