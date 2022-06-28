@@ -74,8 +74,7 @@ public class ReviewCalculate {
                     }
 
                 }*/
-                    //webDriver.findElement(By.className("ant-btn-default")).click();
-                    System.out.println(System.currentTimeMillis());
+                    webDriver.findElement(By.className("ant-btn-default")).click();
 
 
                 }
