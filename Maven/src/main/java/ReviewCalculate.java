@@ -1,7 +1,8 @@
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.cyberneko.html.HTMLElements;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import sun.rmi.runtime.Log;
 
 import javax.print.DocFlavor;
@@ -26,10 +27,10 @@ public class ReviewCalculate {
         //窗口最大化；
         webDriver.manage().window().maximize();
         try {
-            //刚打开时较慢，无法定位元素，设置等待10s；
-            Thread.sleep(10000);
-            System.out.println(webDriver.getCurrentUrl());
-            webDriver.findElement(By.id("passport")).sendKeys(ID);
+            //刚打开时较慢，无法定位元素，设置等待时间，最长20s，每1秒检查一次；
+            WebDriverWait webDriverWait=new WebDriverWait(webDriver,20,1000);
+            //检查元素是否存在
+            webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id("passport"))).sendKeys(ID);
             webDriver.findElement(By.id("password")).sendKeys(PASSWORD);
             webDriver.findElement(By.className("ant-btn-primary")).click();
 
@@ -57,10 +58,11 @@ public class ReviewCalculate {
                     //切换至方案编辑页面
                     webDriver.switchTo().window(handle);
                     String currentHandle=webDriver.getWindowHandle();
+                    Thread.sleep(3000);
                     webDriver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/header/div/div[2]/div/ul/button[2]")).click();
                     webDriver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/header/div/div[2]/div/ul/button[2]")).click();
                     webDriver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/header/div/div[2]/div/ul/button[2]")).click();
-                    //点击计算
+                    //点击计算按钮，进入计算页面
                     webDriver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/main/div[1]/div/div[1]/div[5]/div[1]/div/div[3]")).click();
                     Thread.sleep(5000);
                 /*Set<String> currentAllHandles=webDriver.getWindowHandles();
@@ -74,14 +76,19 @@ public class ReviewCalculate {
                     }
 
                 }*/
-                    webDriver.findElement(By.className("ant-btn-default")).click();
+                    //新建计算
+                    //webDriver.findElement(By.className("ant-btn-default")).click();
+                    Thread.sleep(2000);
+                    //WebElement element=webDriver.findElement(By.className("ant-col-3"));
+                    webDriver.findElement(By.linkText("计算成功"));
 
 
                 }
 
             }
-        }catch (Exception e){
+        }catch (NoSuchElementException e){
             e.printStackTrace();
+            System.out.println("没有找到元素");
         }
 
     }
