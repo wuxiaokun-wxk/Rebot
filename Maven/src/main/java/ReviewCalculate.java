@@ -58,7 +58,8 @@ public class ReviewCalculate {
                     //切换至方案编辑页面
                     webDriver.switchTo().window(handle);
                     String currentHandle=webDriver.getWindowHandle();
-                    Thread.sleep(3000);
+                    Thread.sleep(5000);
+                    //webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/div[1]/div/header/div/div[2]/div/ul/button[2]"))).click();
                     webDriver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/header/div/div[2]/div/ul/button[2]")).click();
                     webDriver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/header/div/div[2]/div/ul/button[2]")).click();
                     webDriver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/header/div/div[2]/div/ul/button[2]")).click();
@@ -77,10 +78,7 @@ public class ReviewCalculate {
 
                 }*/
                     //新建计算
-                    //webDriver.findElement(By.className("ant-btn-default")).click();
-                    Thread.sleep(2000);
-                    //WebElement element=webDriver.findElement(By.className("ant-col-3"));
-                    webDriver.findElement(By.linkText("计算成功"));
+                    webDriver.findElement(By.className("ant-btn-default")).click();
 
 
                 }
