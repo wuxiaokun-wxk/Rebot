@@ -21,6 +21,7 @@ public class ReviewCalculate {
     public static void main  (String[] args) throws Exception{
 
         WebDriver webDriver=new ChromeDriver();
+        //获得当前页面句柄
         String materialHandle = webDriver.getWindowHandle();
         //登录desin；
         webDriver.get(STD_DESIGN_URL);
@@ -57,7 +58,6 @@ public class ReviewCalculate {
                 if(handle.equals(materialHandle)==false){
                     //切换至方案编辑页面
                     webDriver.switchTo().window(handle);
-                    String currentHandle=webDriver.getWindowHandle();
                     Thread.sleep(5000);
                     //webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/div[1]/div/header/div/div[2]/div/ul/button[2]"))).click();
                     webDriver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/header/div/div[2]/div/ul/button[2]")).click();
@@ -66,17 +66,7 @@ public class ReviewCalculate {
                     //点击计算按钮，进入计算页面
                     webDriver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/main/div[1]/div/div[1]/div[5]/div[1]/div/div[3]")).click();
                     Thread.sleep(5000);
-                /*Set<String> currentAllHandles=webDriver.getWindowHandles();
-                for(String newHandle:currentAllHandles){
-                    if (newHandle.equals(materialHandle)==false && newHandle.equals(currentHandle) ==false ){
-                        webDriver.switchTo().window(newHandle);
-                        webDriver.findElement(By.xpath("/html/body/div[6]/div/div[2]/div/div[2]/button")).click();
 
-                        //webDriver.findElement(By.xpath("/html/body/div[6]/div/div[2]/div/div[2]/div/div/div[1]/button")).click();
-
-                    }
-
-                }*/
                     //新建计算
                     webDriver.findElement(By.className("ant-btn-default")).click();
 
